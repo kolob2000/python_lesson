@@ -22,4 +22,3 @@ elif MONTH < duration < YEAR - 1:
     print(f'Ваше время в месяцах: {monthes} мес. {days} дн. {hours} час. {minutes} мин. {seconds} сек. ')
 else:
     print(f'Ваше время в годах:{years} лет {monthes} мес. {days} дн. {hours} час. {minutes} мин. {seconds} сек. ')
-
