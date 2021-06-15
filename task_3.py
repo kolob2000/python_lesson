@@ -23,14 +23,14 @@ print('Первоначальный список: ')
 print(weather_list)
 print('Строка:')
 new_weather_list = []
-for i in weather_list:
-    if i.isdigit():
-        if len(i) == 1:
-            print(f'"0{i}"', end=' ')
+for element in weather_list:
+    if element.isdigit():
+        if len(element) == 1:
+            print(f'"0{element}"', end=' ')
         else:
-            print(f'"{i}"', end=' ')
-    elif i.find('-') != -1 or i.find('+') != -1:
-        print(f'"{i[0]}{int(i[1:]):02d}"', end=' ')
+            print(f'"{element}"', end=' ')
+    elif element.find('-') != -1 or element.find('+') != -1:
+        print(f'"{element[0]}{int(element[1:]):02d}"', end=' ')
     else:
-        print(i, end=' ')
+        print(element, end=' ')
 print('\n Список не изменился: \n', weather_list)
