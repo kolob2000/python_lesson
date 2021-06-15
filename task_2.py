@@ -5,11 +5,17 @@ new_weather_list = []
 for i in weather_list:
     if i.isdigit():
         if len(i) == 1:
-            new_weather_list.append(f'"0{i}"')
+            new_weather_list.append('"')
+            new_weather_list.append(f'{int(i):02d}')
+            new_weather_list.append('"')
         else:
-            new_weather_list.append(f'"{i}"')
+            new_weather_list.append('"')
+            new_weather_list.append(f'{i}')
+            new_weather_list.append('"')
     elif i.find('-') != -1 or i.find('+') != -1:
-        new_weather_list.append(f'"{i[0]}{int(i[1:]):02d}"')
+        new_weather_list.append('"')
+        new_weather_list.append(f'{i[0]}{int(i[1:]):02d}')
+        new_weather_list.append('"')
     else:
         new_weather_list.append(i)
 
