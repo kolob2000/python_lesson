@@ -15,5 +15,5 @@ def num_translate(digit_name: str):
     return digits.get(digit_name)
 
 
-translation = num_translate(input('Введете название числа буквами: '))
-print(f'Перевод вашего числа: {translation}')
+translation = num_translate(input('Введете английское название цифры: '))
+print(f'Перевод вашей цифы: {translation}')
