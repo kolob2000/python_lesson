@@ -17,5 +17,5 @@ dict_names = thesaurus_adv('Сергей Омский', 'Андрей Лихав
                            'Евгения Набиева', 'Марат Набиев', 'Роман Смирнов', 'Елена Орлова')
 
 print(dict_names, '\n')
-for i in dict_names.items():
-    print(i)
+for item in dict_names.items():
+    print(item)
