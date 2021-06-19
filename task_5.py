@@ -1,4 +1,4 @@
-from random import choice, sample
+from random import choice
 
 
 def get_jokes(quantity=1, flag=False):
