@@ -11,4 +11,3 @@ with open('nginx_logs.txt', 'r') as f:
 
 for i in parsed_list:
     print(i)
-

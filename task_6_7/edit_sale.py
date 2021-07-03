@@ -29,4 +29,5 @@ def edit_sales(number, sale):
     except ValueError as e:
         print(f'Ошибка {e}. Строка должна быть числом!')
 
+
 edit_sales(argv[1], argv[2])
