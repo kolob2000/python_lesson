@@ -17,3 +17,5 @@ def num_translate(digit_name: str):
 
 translation = num_translate(input('Введете английское название цифры: '))
 print(f'Перевод вашей цифы: {translation}')
+
+#1111
