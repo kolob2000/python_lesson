@@ -1,55 +1,44 @@
+import os
 import yaml
 
-structures = {
-    'my_project': {
-        'setting': [
-            '__init__.py',
-            'dev.py',
-            'prod.py',
-        ],
-        'mainapp': [
-            '__init__.py',
-            'models.py',
-            'views.py',
-            {
-                'templates': {
-                    'mainapp': [
-                        'base.html',
-                        'index.html',
-                    ]
-                }
-            }
-        ],
-        'authapp': [
-            '__init__.py',
-            'models.py',
-            'views.py',
-            {
-                'templates': {
-                    'authapp': [
-                        'base.html',
-                        'index.html',
-                    ],
-                }
-            }
-        ],
-    }
-}
 
-with open('config.yaml', 'w', encoding='utf-8') as f:
-    yaml.dump(structures, f)
-
-def valid_yaml_file(file_name: str):
+def valid_yaml_file(file_name: str) -> dict:
     with open(file_name, 'r', encoding='utf-8') as f:
+        folders = yaml.safe_load(f)
+    if folders is None:
+        print("File is empty. Can't create project.")
+        exit(1)
+    else:
+        return folders
 
 
+def yaml_project_maker(structure: dict, path=os.getcwd()) -> int:
+    for key, value in structure.items():
+        if not os.path.exists(f'{path}/{key}'):
+            os.mkdir(f'{path}/{key}')
+        else:
+            return print('Folder exsists. Rename your project.')
+        if isinstance(value, dict):
+            yaml_project_maker(value, f'{path}/{key}')
+        if isinstance(value, str):
+            if not os.path.exists(f'{path}/{key}/{value}'):
+                with open(f'{path}/{key}/{value}', 'w', encoding='utf-8') as f:
+                    pass
+        if isinstance(value, list):
+            for element in value:
+                if isinstance(element, str):
+                    if not os.path.exists(f'{path}/{key}/{element}'):
+                        with open(f'{path}/{key}/{element}', 'w', encoding='utf-8') as f:
+                            pass
+                if isinstance(element, dict):
+                    yaml_project_maker(element, f'{path}/{key}')
+    return 1
 
-def yaml_structure_maker(file_name: str, root_path=''):
 
-        for i in yaml.safe_load(f).values():
-            if isinstance(i, dict):
-                pass
-            if isinstance(i, list):
-                pass
-            if isinstance(i, str):
-                pass
+def main(file_name):
+    folder_structure = valid_yaml_file(file_name)
+    if yaml_project_maker(folder_structure) == 1:
+        print('Project created')
+
+
+main('config.yaml')
