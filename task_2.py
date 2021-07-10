@@ -3,7 +3,7 @@ class Road:
         self._length = length
         self._width = width
 
-    def mass_asphalt_calc(self, thickness=1):
+    def mass_asphalt_calc(self, thickness=1) -> int:
         mass = self._width * self._length * 25 * thickness
         return mass
 
