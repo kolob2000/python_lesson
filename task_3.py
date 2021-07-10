@@ -1,4 +1,8 @@
+from functools import wraps
+
+
 def type_log(func):
+    @wraps(func)
     def log_wrapper(*args, **kwargs):
         print(f'{type(func(*args, **kwargs))} {func.__name__}(', end='')
         for i in args:
@@ -17,3 +21,4 @@ def add(a=1, b=7):
 
 
 print(add(7.0, b=24))
+print(add.__name__, 'декоратор замаскирован)')
